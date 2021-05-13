@@ -17,7 +17,7 @@ typedef BPMChangeEvent =
 class Conductor
 {
 	public static var bpm:Int = 100;
-	public static var crochet:Float = ((60 / bpm) * 1300); // beats in milliseconds
+	public static var crochet:Float = ((60 / bpm) * 1000); // beats in milliseconds
 	public static var stepCrochet:Float = crochet / 4; // steps in milliseconds
 	public static var songPosition:Float;
 	public static var lastSongPos:Float;
@@ -34,7 +34,7 @@ class Conductor
 
 	public static function recalculateTimings()
 	{
-		Conductor.safeFrames = 24;
+		Conductor.safeFrames = 10;
 		Conductor.safeZoneOffset = Math.floor((Conductor.safeFrames / 60) * 1000);
 		Conductor.timeScale = Conductor.safeZoneOffset / 166;
 	}

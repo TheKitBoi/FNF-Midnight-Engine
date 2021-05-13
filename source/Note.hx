@@ -1,5 +1,7 @@
 package;
 
+import flixel.addons.effects.FlxSkewedSprite;
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
@@ -7,6 +9,7 @@ import flixel.util.FlxColor;
 #if polymod
 import polymod.format.ParseRules.TargetSignatureElement;
 #end
+import PlayState;
 
 using StringTools;
 
@@ -119,7 +122,9 @@ class Note extends FlxSprite
 		}
 
 		// trace(prevNote);
-
+		if (FlxG.save.data.downScroll && sustainNote) 
+			flipY = true;
+		
 		if (isSustainNote && prevNote != null)
 		{
 			noteScore * 0.2;
@@ -160,10 +165,8 @@ class Note extends FlxSprite
 						prevNote.animation.play('redhold');
 				}
 				
-				//prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * strumTime;					   
-				prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.8 * PlayState.SONG.speed;
+				prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * PlayState.SONG.speed;
 				prevNote.updateHitbox();
-				// prevNote.setGraphicSize();
 			}
 		}
 	}
@@ -175,13 +178,13 @@ class Note extends FlxSprite
 		if (mustPress)
 		{
 			// The * 0.5 is so that it's easier to hit them too late, instead of too early
-			if (strumTime >= Conductor.songPosition - (Conductor.safeZoneOffset)
-				&& strumTime <= Conductor.songPosition + (Conductor.safeZoneOffset * 0.55))
+			if (strumTime > Conductor.songPosition - (Conductor.safeZoneOffset * 1.5)
+				&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.5))
 				canBeHit = true;
 			else
 				canBeHit = false;
 
-			if (strumTime < Conductor.songPosition - Conductor.safeZoneOffset && !wasGoodHit)
+			if (strumTime < Conductor.songPosition - Conductor.safeZoneOffset * Conductor.timeScale && !wasGoodHit)
 				tooLate = true;
 		}
 		else
