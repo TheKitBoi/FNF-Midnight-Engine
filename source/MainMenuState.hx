@@ -1,8 +1,9 @@
 package;
 
-#if desktop
+/* #if desktop
 import Discord.DiscordClient;
-#end
+#end */
+
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -36,10 +37,10 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-		#if desktop
+		/* #if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
-		#end
+		#end */
 
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;

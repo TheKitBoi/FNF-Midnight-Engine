@@ -1,8 +1,9 @@
 package;
 
-#if desktop
+/* #if desktop
 import Discord.DiscordClient;
-#end
+#end */
+
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -50,10 +51,10 @@ class FreeplayState extends MusicBeatState
 			}
 		 */
 
-		#if desktop
+		/* #if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
-		#end
+		#end */
 
 		var isDebug:Bool = false;
 

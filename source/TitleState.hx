@@ -1,9 +1,10 @@
 package;
 
-#if desktop
+/* #if desktop
 import Discord.DiscordClient;
 import sys.thread.Thread;
-#end
+#end */
+
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -94,13 +95,13 @@ class TitleState extends MusicBeatState
 		});
 		#end
 
-		#if desktop
+		/* #if desktop
 		DiscordClient.initialize();
 		
 		Application.current.onExit.add (function (exitCode) {
 			DiscordClient.shutdown();
 		 });
-		#end
+		#end */
 	}
 
 	var logoBl:FlxSprite;
