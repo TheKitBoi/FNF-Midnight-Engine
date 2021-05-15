@@ -1,5 +1,6 @@
 package;
 
+import openfl.Lib;
 import Conductor.BPMChangeEvent;
 import flixel.FlxG;
 import flixel.addons.transition.FlxTransitionableState;
@@ -21,6 +22,8 @@ class MusicBeatState extends FlxUIState
 
 	override function create()
 	{
+		(cast (Lib.current.getChildAt(0), Main)).setFPSCap(120);
+		
 		if (transIn != null)
 			trace('reg ' + transIn.region);
 
@@ -43,6 +46,7 @@ class MusicBeatState extends FlxUIState
 
 	private function updateBeat():Void
 	{
+		lastBeat = curStep;
 		curBeat = Math.floor(curStep / 4);
 	}
 

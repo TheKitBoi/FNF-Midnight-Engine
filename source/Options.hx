@@ -61,7 +61,6 @@ class Option
 		return description;
 	}
 
-	
 	// Returns whether the label is to be updated.
 	public function press():Bool { return throw "stub!"; }
 	private function updateDisplay():String { return throw "stub!"; }

@@ -1,5 +1,6 @@
 package;
 
+import openfl.Lib;
 import Conductor.BPMChangeEvent;
 import flixel.FlxG;
 import flixel.FlxSubState;
@@ -32,7 +33,8 @@ class MusicBeatSubstate extends FlxSubState
 		if (oldStep != curStep && curStep > 0)
 			stepHit();
 
-
+		(cast (Lib.current.getChildAt(0), Main)).setFPSCap(120);
+		
 		super.update(elapsed);
 	}
 
